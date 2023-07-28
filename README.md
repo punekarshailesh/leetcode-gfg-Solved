@@ -1,2 +1,2 @@
 # LeetCode_Codes
-Questions solved on LeeetCode platform
+Questions solved on LeeetCode and Gfg platform
