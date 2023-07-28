@@ -38,22 +38,44 @@ class Solution
         // Add code here
         
         Node* temp = head;
-        
-        vector<int>arr;
-        
-        while(temp)
+        int c1 = 0 , c2 = 0 , c3 = 0;
+        while(temp != NULL)
         {
-            arr.push_back(temp->data);
+            if(temp->data == 0)
+            {
+                c1 +=1;
+            }
+            else if(temp->data == 1)
+            {
+                c2 += 1;
+            }
+            else
+            {
+                c3 += 1;
+            }
             temp = temp->next;
         }
         
-        sort(arr.begin() , arr.end());
-        
         temp = head;
         
-        for(int i = 0 ; i<arr.size() ; i++)
+        // copying 0s
+        for(int i = 0 ; i<c1 ; i++)
         {
-            temp->data = arr[i];
+            temp->data = 0;
+            temp = temp->next;
+        }
+        
+        // copying 1
+        for(int i =0 ; i<c2 ; i++)
+        {
+            temp->data = 1;
+            temp = temp->next;
+        }
+        
+        // copying 2
+        for(int i = 0 ; i<c3 ; i++)
+        {
+            temp->data = 2;
             temp = temp->next;
         }
         
