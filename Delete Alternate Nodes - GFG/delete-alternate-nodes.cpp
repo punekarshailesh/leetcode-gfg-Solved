@@ -98,7 +98,10 @@ void deleteAlt(struct Node *head){
     
     while(temp && temp->next)
     {
+        Node* todelete = temp->next;
         temp->next = temp->next->next;
+        todelete->next = NULL;
+        delete todelete;
         temp = temp->next;
     }
     
