@@ -75,28 +75,25 @@ Node* deleteMid(Node* head)
 {
     // Your Code Here
     
-    Node* temp = head;
+        Node* temp = head;
     
-    int count = 0;
+        int count = 0;
     
-    // counting number of nodes
+        // counting number of nodes
     
-    while(temp)
-    {
-        count += 1;
-        temp = temp->next;
-    }
+        while(temp)
+        {
+            count += 1;
+            temp = temp->next;
+        }
     
-    if(count == 1)
-    {
-        delete head;
-        return NULL;
-    }
-    temp = head;
-    int mid = 0;
-    if(count%2 == 0)
-    {
-        // even no of nodes
+        if(count == 1)
+        {
+            delete head;
+            return NULL;
+        }   
+        temp = head;
+        int mid = 0;
         mid = count/2;
         for(int i = 0 ; i<mid-1 ; i++)
         {
@@ -108,19 +105,4 @@ Node* deleteMid(Node* head)
         delete Delet;
         return head;
         
-    }
-    else
-    {
-        // odd no of nodes
-        mid = count/2;
-        for(int i = 0 ; i<mid-1 ; i++)
-        {
-            temp = temp->next;
-        }
-        Node* Delete = temp->next;
-        temp->next = temp->next->next;
-        Delete->next = NULL;
-        delete Delete;
-        return head;
-    }
 }
