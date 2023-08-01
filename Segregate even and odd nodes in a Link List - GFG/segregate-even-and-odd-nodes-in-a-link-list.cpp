@@ -43,43 +43,48 @@ class Solution{
 public:
     Node* divide(int N, Node *head){
         // code here
-        vector<int>odd;
-        vector<int>even;
         
-        Node* temp = head;
+        Node* oddCurr = NULL, *evenCurr = NULL , *even = NULL , *odd = NULL;
         
-        while(temp)
+        Node* curr = head;
+        
+        while(curr)
         {
-            if(temp->data%2 == 0)
+            if(curr->data%2)
             {
-                // even 
-                even.push_back(temp->data);
-            }
-            else
+                if(!odd) {
+                    odd = curr;
+                    oddCurr = curr;
+                } else {
+                    oddCurr->next = curr;
+                    oddCurr = oddCurr->next;
+                }
+            } 
+            else 
             {
-                // odd
-                odd.push_back(temp->data);
+                if(!even) {
+                    even = curr;
+                    evenCurr = curr;
+                } else {
+                    evenCurr->next = curr;
+                    evenCurr = evenCurr->next;
+                }
             }
-            temp = temp->next;
+            
+            curr = curr->next;
         }
         
-        temp = head;
-        
-        // even 
-        for(int i = 0 ; i<even.size() ; i++)
-        {
-            temp->data = even[i];
-            temp = temp->next;
+        if(!even) {
+            oddCurr->next = NULL;
+            return odd;
+        } else if(!odd) {
+            evenCurr->next = NULL;
+            return even;
         }
         
-        // odd
-        for(int i = 0 ; i<odd.size() ; i++)
-        {
-            temp->data = odd[i];
-            temp = temp->next;
-        }
-        
-        return head;
+        evenCurr->next = odd;
+        oddCurr->next = NULL;
+        return even;
     }
 };
 
