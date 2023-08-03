@@ -26,20 +26,45 @@ class Solution
     {
         // Your code here  
         
-        vector<int>ans;
+        
+        int Max = INT_MIN;
         
         for(int i = 0 ; i<n ; i++)
         {
-            ans.push_back(arr[i]);
+            if(arr[i] > Max)
+            {
+                Max = arr[i];
+            }
+        }
+        int size = Max+1;
+        int ans[size] = {0};
+        
+        for(int i = 0 ; i<n ; i++)
+        {
+            ans[arr[i]] += 1;
         }
         
-        sort(ans.begin() , ans.end());
         
         int k = 0;
-        for(int i = 0 ; i<ans.size() ; i++)
+        for(int i = 0 ; i<size ; i++)
         {
-            arr[k++] = ans[i];
+            if(ans[i] == 1)
+            {
+               arr[k++] = i;   
+            }
+            else if(ans[i] != 0 && ans[i] > 1)
+            {
+                // duplicates are present
+                int count = ans[i];
+                while(count--)
+                {
+                    arr[k++] = i;
+                }
+                
+            }
+            // else if(ans[i])
         }
+        
     }
 };
 
