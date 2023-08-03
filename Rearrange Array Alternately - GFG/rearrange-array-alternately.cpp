@@ -17,6 +17,9 @@ class Solution{
     { 
     	
     	// Your code here
+    	
+    	int k = 0;
+    	
     	vector<long long>ans;
     	
     	for(int i = 0 , j = n-1 ; i<=j ; i++ , j--)
@@ -25,11 +28,10 @@ class Solution{
     	    ans.push_back(arr[i]);
     	}
     	
-    	int k = 0;
-    	for(int i = 0 ; i<ans.size() ; i++)
-    	{
-    	    arr[k++] = ans[i];
-    	}
+        for(int i = 0 ; i<ans.size() ; i++)
+        {
+            arr[k++] = ans[i];
+        }
     	 
     }
 };
